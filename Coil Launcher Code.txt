@@ -1,0 +1,34 @@
+var b = require('bonescript');
+
+var ledPin = "P9_11";
+var ledPin2 = "P9_13";
+var ledPin3 = "P9_15";
+
+b.pinMode(ledPin, b.OUTPUT);
+b.pinMode(ledPin2, b.OUTPUT);
+b.pinMode(ledPin3, b.OUTPUT);
+
+b.digitalWrite(ledPin, b.HIGH);
+b.digitalWrite(ledPin2, b.LOW);
+b.digitalWrite(ledPin3, b.LOW);
+
+setTimeout(TurnOffCoilOne, 30);
+
+
+function TurnOffCoilOne() {
+    b.digitalWrite(ledPin, b.LOW); 
+    b.digitalWrite(ledPin2, b.HIGH);
+    setTimeout(TurnOffCoilTwo, 20);
+}
+
+function TurnOffCoilTwo() {
+    b.digitalWrite(ledPin2, b.LOW);
+    b.digitalWrite(ledPin3, b.HIGH);
+    setTimeout(TurnOffCoilThree, 10);
+}
+
+function TurnOffCoilThree() {
+    b.digitalWrite(ledPin, b.LOW);
+    b.digitalWrite(ledPin2, b.LOW);
+    b.digitalWrite(ledPin3, b.LOW);
+}
